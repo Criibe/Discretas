@@ -1,0 +1,56 @@
+//
+//  main.c
+//Teoría de Grafos
+//  Created by Cristian Salomon Olmedo on 09/01/16.
+//  Copyright © 2016 Cristian Salomon Olmedo. All rights reserved.
+//
+
+#include <stdio.h>
+
+int matriz_adya [8][8], flag=0, a, b;
+
+int main() {
+    printf("****************************************************************\n");
+    printf("*******|----------------------------------------------|*********\n");
+    printf("*******|-*************TEORÍA DE GRAFOS***************-|*********\n");
+    printf("*******|----------------------------------------------|*********\n");
+    printf("****************************************************************\n\n\n\n");
+    
+    
+    for(int i=0; i<8; i++){
+        
+        do{
+            printf("V%d: ¿Qué posiciones quiere marcar con uno \"1\"? (Ingrese los numeros (menores a 9) separados por una coma) =>  ", i+1);
+            scanf("%d,%d", &a, &b);
+        
+            //printf("Valores de a y b %d %d\n", a, b);
+            
+            if((a<=8 && a>=1) && (b<=8 && b>=1))
+                flag=1;
+            else
+                printf("\nError, los numeros deben ser mayores o iguales a 1 y menores o iguales a 8\n");
+            
+        }while(flag == 0);
+        flag=0;
+        
+            for(int j=0; j<8; j++){
+                    matriz_adya[i][j] = 0;
+            }
+            matriz_adya[i][a-1]= 1;
+            matriz_adya[i][b-1]=1;
+        
+    
+        
+    }
+    printf("\n\n   V1 V2 V3 V4 V5 V6 V7 V8\n");
+    for(int i=0; i<8; i++){
+        printf("V%d  ",i+1);
+        for(int j=0; j<8; j++){
+            printf("%d  ", matriz_adya[j][i]);
+        }
+
+    printf("\n");
+    }
+
+
+}
