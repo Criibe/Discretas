@@ -1,0 +1,65 @@
+//
+//  main.c
+//Teoría de Grafos
+//  Created by Cristian Salomon Olmedo on 09/01/16.
+//  Copyright © 2016 Cristian Salomon Olmedo. All rights reserved.
+//
+
+#include <stdio.h>
+
+int matriz_adya [8][8] = {0}, flag=1,a, i=0, j=0, k;
+int espejo (int matrizespejo[8][8]);
+
+int main() {
+    printf("****************************************************************\n");
+    printf("*******|----------------------------------------------|*********\n");
+    printf("*******|-*************TEORÍA DE GRAFOS***************-|*********\n");
+    printf("*******|----------------------------------------------|*********\n");
+    printf("****************************************************************\n\n\n\n");
+    
+  
+        
+    for(k=0; k<8;){
+            printf("V%d: ¿Qué posicion quiere marcar con uno \"1\"? (Ingrese el numero menor a 9) y -1 para terminar =>  ", k+1);
+            fflush(stdin);
+            scanf("%d", &a);
+        
+            if(a == -1){
+                k++;
+                printf("\n");
+            }
+            else if(a<=8 && a>=1){
+                matriz_adya[k][a-1] = 1;
+            }
+            else
+                printf("🚫 Error, el número debe ser mayor o igual a 1 y menor o igual a 8 🚫\n\n");
+        }//Leer
+    printf("\n\n   V1 V2 V3 V4 V5 V6 V7 V8\n");
+    for(int i=0; i<8; i++){
+        printf("V%d  ",i+1);
+        for(int j=0; j<8; j++){
+            printf("%d  ", matriz_adya[j][i]);
+        }
+    printf("\n");
+    }//Imprimir
+    espejo(matriz_adya);
+    if(flag == 1)
+        printf("\n\n¡Esta matriz es simétrica!\n\n");
+    else
+        printf("\n\n¡Esta matriz NO es simétrica!\n\n");
+
+
+}
+
+int espejo(int matrizespejo[8][8]){
+    for(int i=0; i<8; i++){
+        for(int j=0; j<8; j++){
+            if((matriz_adya[i][j] == matriz_adya[j][i]) == 0){
+                flag = 0;
+                break;
+                break;
+            }
+        }
+    }
+    return flag;//acordarse
+}
